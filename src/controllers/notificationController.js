@@ -1,11 +1,13 @@
 const { getIO } = require("../socket");
+require("dotenv").config();
 
 function notifyUser(req, res) {
-  const { userId, message } = req.body;
+  const { message } = req.body; 
+  const AdminId = process.env.ADMIN_ID;
 
   const io = getIO();
 
-  io.to(userId).emit("order:update", message);
+  io.to(AdminId).emit("order:update", message);
 
   res.send({ status: "ok" });
 }

@@ -2,8 +2,10 @@ const express = require("express");
 const http = require("http");
 const cors = require("cors");
 const notificationRoutes = require("./routes/notificationRoutes");
+require("dotenv").config();
 
 const { initSocket } = require("./socket");
+const port = process.env.PORT;
 
 const app = express();
 app.use(cors());
@@ -19,6 +21,6 @@ app.get("/", (req, res) => {
 
 app.use("/api", notificationRoutes);
 
-server.listen(3001, () => {
+server.listen(port, () => {
   console.log("ecommerce-websocket running in 3001");
 });
