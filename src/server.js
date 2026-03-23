@@ -5,7 +5,7 @@ const notificationRoutes = require("./routes/notificationRoutes");
 require("dotenv").config();
 
 const { initSocket } = require("./socket");
-const port = process.env.PORT;
+const port = process.env.PORT || 3001;
 
 const app = express();
 app.use(cors());
